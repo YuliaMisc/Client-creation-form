@@ -1,8 +1,8 @@
 <template>
-  <div class="notification" v-show="notificationIsShow">
+  <div class="notification" v-if="notificationIsShow">
     <div class="notificotion__tiile">Новый клиент успешно создан</div>
     <div class="progress progress-infinite">
-      <div class="progress-bar3"></div>                       
+      <div class="progress-bar3"></div>
     </div> 
   </div>
 </template>

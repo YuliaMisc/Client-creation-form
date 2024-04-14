@@ -1,5 +1,6 @@
-@import '/src/assets/nullstyle.scss';
-@import '/src/assets/variables.scss';
+@import './nullstyle.scss';
+@import './variables.scss';
+
 
 body {
   font-family: Istok Web;
@@ -20,14 +21,15 @@ body {
 }
 ._ibg {
   position: relative;
-}
-._ibg img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  object-fit: cover;
+
+  & img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
 }
 /*---------header-------------------------------*/
 .header {
@@ -40,18 +42,20 @@ body {
       align-items: center;
       justify-content: space-between;
       padding: 20px;
-    }
-    .header__title__logo {
-      font-size: $fs-30;
-      font-weight: 800;
-    }
-    .header__title__avatar {
-      margin: 0px 15px 0px 0px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      img {
+      
+      .header__title__logo {
+        font-size: $fs-30;
+        font-weight: 800;
+      }
+      .header__title__avatar {
+        margin: 0px 15px 0px 0px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
+        background-color: rgb($background-main, 0.8);
+        img {
+          border-radius: 50%;
+        }
       }
     }
   }
@@ -71,16 +75,14 @@ body {
 }
 
 /*---------add-client-------------------------------*/
-
 .add-client__page {
   .add-client__container {
-    padding: 30px;
     margin: 25px auto;
-    max-width: $maxWidthCOntainer;
     width: 80%;
     background: $background-container;
     box-shadow: $box-shadow-2;
     form {
+      padding: 30px;
       text-align: end;
       h2 {
         margin: 0px 0px 20px 0px;
@@ -100,6 +102,7 @@ body {
         flex-wrap: wrap;
         padding: 15px 0px;
         .form-group {
+          position: relative;
           display: flex;
           flex-direction: column;
           min-width: 300px;
@@ -111,9 +114,10 @@ body {
             color: $color-gray-600;
           }
           input {
-            padding: 16px 0px 16px 8px;
+            padding: 16px 8px;
             height: 50px;
             font-size: $fs-18;
+            color: $color-main;
             border: 1px solid $border-input;
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
           }
@@ -123,154 +127,75 @@ body {
             outline: 0;
             box-shadow: $box-shadow-input-focus;
           }
-          .multiselect {
-            box-sizing: content-box;
-            display: block;
+          .select {
             position: relative;
+            display: flex;
+            align-items: center;
+            gap: 3px;
             width: 100%;
             height: 50px;
             text-align: left;
-            padding: 0px;
-            border: none;
-            margin: 0px 0px 10px 0px;
-            .multiselect--active {
-              z-index: 50;
-            }
-            .multiselect__tags {
-              height: 50px;
+            padding: 10px 8px;
+            border: 1px solid $border-input;
+            font-size: $fs-16;
+            color: $color-main;
+            .multiselected {
               display: flex;
               align-items: center;
-              padding: 0px 40px 0 8px;
-              border: 1px solid $border-input;
-              background: $background-light;
-              font-size: $fs-18;
-              .multiselect__tag {
-                position: relative;
-                display: inline-block;
-                padding: 4px 26px 4px 10px;
-                border-radius: 5px;
-                margin-right: 10px;
-                color: $color-light;
-                line-height: 1;
-                background: rgb($background-grey-600, 0.8);
-                margin-bottom: 5px;
-                white-space: nowrap;
-                overflow: hidden;
-                max-width: 100%;
-                text-overflow: ellipsis;
-              }
-              .multiselect__tag-icon {
-                cursor: pointer;
-                margin-left: 7px;
-                position: absolute;
-                right: 0;
-                top: 0;
-                bottom: 0;
-                font-weight: 700;
-                font-style: initial;
-                width: 22px;
-                text-align: center;
-                line-height: 22px;
-                transition: all 0.2s ease;
-                border-radius: 5px;
-              }
-              .multiselect__tag-icon:after {
-                content: "×";
-                color: $color-light;
-                font-size: $fs-14;
-              }
-            }
-            .multiselect__select {
-              line-height: 16px;
-              display: block;
-              position: absolute;
-              box-sizing: border-box;
-              width: 40px;
-              height: 38px;
-              right: 1px;
-              top: 1px;
-              padding: 4px 8px;
-              margin: 0;
-              text-decoration: none;
-              text-align: center;
-              cursor: pointer;
-              transition: transform 0.2s ease;
-            }
-            .multiselect__select:before {
-              position: relative;
-              right: 0;
-              top: 65%;
-              color: $color-gray-600;
-              margin-top: 4px;
-              border-style: solid;
-              border-width: 5px 5px 0 5px;
-              border-color: $border-input transparent transparent transparent;
-              content: "";
-            }
-            .multiselect__content-wrapper {
-              position: absolute;
-              display: block;
-              background: $background-light;
-              width: 100%;
-              max-height: 240px;
-              overflow: auto;
-              border: 1px solid $border-input;
-              border-top: none;
-              border-bottom-left-radius: 5px;
-              border-bottom-right-radius: 5px;
-              z-index: 50;
-              -webkit-overflow-scrolling: touch;
-            }
-            .multiselect__content {
-              list-style: none;
-              display: inline-block;
-              padding: 0;
-              margin: 0;
-              min-width: 100%;
-              vertical-align: top;
-            }
-            .multiselect--above .multiselect__content-wrapper {
-              bottom: 100%;
-              border-bottom-left-radius: 0;
-              border-bottom-right-radius: 0;
-              border-top-left-radius: 5px;
-              border-top-right-radius: 5px;
-              border-bottom: none;
-              border-top: 1px solid $border-input;
-            }
-            .multiselect__option {
-              display: block;
-              padding: 12px;
-              min-height: 40px;
-              line-height: 16px;
-              text-decoration: none;
-              text-transform: none;
-              vertical-align: middle;
-              position: relative;
-              cursor: pointer;
-              white-space: nowrap;
-            }
-            .multiselect__option:after {
-              top: 0;
-              right: 0;
-              position: absolute;
-              line-height: 40px;
-              padding-right: 12px;
-              padding-left: 20px;
-              font-size: $fs-14;
-            }
-            .multiselect__option--highlight {
-              background: rgb($background-grey-600, 0.8);
-              outline: none;
+              padding: 5px 10px;
+              background: rgb($background-grey-600, 0.6);
               color: $color-light;
+              border-radius: 5px;
+              .multiselected__icons {
+                display: flex;
+                margin: 0px 0px 0px 5px;
+                padding: 0px 3px 3px 3px;
+                svg {
+                  width: 10px;
+                  height: 10px;
+                  path {
+                    fill: $color-light;
+                  }
+                }
+              }
             }
-            .multiselect__option--selected {
-              background: rgb($background-grey-500, 0.5);
-              font-weight: bold;
+            .selected {
+              font-size: $fs-18;
+              color: $color-main;
+            }
+            .select__icons {
+              position: absolute;
+              display: flex;
+              right: 10px;
+              svg {
+                width: 15px;
+                height: 15px;
+                path {
+                  fill: $background-grey-600;
+                }
+              }
             }
           }
-          .multiselect * {
-            box-sizing: border-box;
+          .options {
+            position: absolute;
+            top: 76px;
+            z-index: 50;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid $border-input;
+            border-right: 1px solid $border-input;
+            border-left: 1px solid $border-input;
+            button {
+              padding: 5px 8px;
+              font-size: $fs-18;
+              text-align: start;
+              background: $background-container;
+            }
+            button:hover {
+              color: $color-light;
+              background: $background-grey-500;
+            }
           }
           .form__error {
             height: 20px;
@@ -291,6 +216,9 @@ body {
             background: $background-light;
             outline: 0;
             box-shadow: $box-shadow-input-error;
+          }
+          .select {
+            border: 2px solid $border-input-error;
           }
         }
         .checkbox{
@@ -341,21 +269,24 @@ body {
           }
         }
       }
-      button {
-        margin: 25px 0px;
+      .button_submit {
         padding: 15px;
-        height: 60px;
         font-size: $fs-18;
-        font-weight: 700;
+        font-weight: 600;
         color: $color-button;
         background: $background-button;
         border-radius: 5px;
         transition: all 0.3s cubic-bezier(.25,.8,.25,1);
       }
-      button:hover {
+      .button_submit:hover {
         box-shadow: $box-shadow-5;
       }
     }
+  }
+  .footer_container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
   }
   .notification {
   position: fixed;
@@ -374,9 +305,9 @@ body {
     .progress-bar3 {
       height: 5px;
       background-image: 
-         linear-gradient(to right, 
-           $green, $turquoise, $blue, 
-           $light-blue);
+          linear-gradient(to right, 
+            $green, $turquoise, $blue, 
+            $light-blue);
       transition: 0.4s linear;  
       transition-property: width, background-color;    
     }
@@ -390,6 +321,24 @@ body {
     @keyframes colorAnimation {
       0% { width: 100%; }
       100% { width: 0%; }
+    }
+  }
+}
+
+@media (max-width: $md-774) {
+  .add-client__page {
+    .add-client__container {
+      margin: 0px;
+      width: 100%;
+      box-shadow: none;
+      form {
+        button {
+          width: 100%;
+        }
+      }
+    }
+    .footer_container {
+      padding: 0px;
     }
   }
 }

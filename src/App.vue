@@ -1,19 +1,18 @@
 <template>
   <div id="app">
-    <LayoutPage/>
+    <Layout/>
+    <AddClient />
   </div>
 </template>
 
 <script>
+  import Layout from './components/Layout.vue';
+  import AddClient from './pages/AddClient.vue';
 
-import LayoutPage from './components/LayoutPage.vue';
-
-export default {
-  name: 'App',
-  components: {
-    LayoutPage,
+  export default {
+    name: 'App',
+    components: { Layout, AddClient },
   }
-}
 </script>
 
 

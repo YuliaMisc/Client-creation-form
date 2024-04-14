@@ -5,7 +5,7 @@
       <div class="header__title">
         <div class="header__title__logo">Medicare</div>
         <div class="header__title__avatar _ibg">
-          <img src="../assets/image.jpg" alt="">
+          <img src="../../public/avatar.png" alt="">
         </div>
       </div>
     </div>
@@ -18,17 +18,12 @@
         </div>
       </div>
     </div>
-    <AddClientPage/>
   </div>
 </template>
 
 <script>
-import AddClientPage from './AddClientPage.vue';
 
 export default {
   name: 'LayoutPage',
-  components: {
-    AddClientPage
-  }
 }
 </script>
